@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modibi Creative Agency - Social Media Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. SETUP & VARIABLES --- */
+        :root {
+            --primary: #FF6B6B;      /* Aksen Menu (Coral) */
+            --brand: #2C3E50;        /* Warna Brand Modibi (Navy Professional) */
+            --accent: #4ECDC4;       /* Warna Aksen Segar */
+            --dark: #2D3436;
+            --light: #F7F9FC;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- 2. COMPONENTS --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+
+        .btn-brand {
+            background-color: var(--brand);
+            color: var(--white);
+        }
+        
+        .btn-brand:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .badge {
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: absolute;
+            top: -12px;
+            right: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--brand);
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #636e72;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 3. HERO BRANDING --- */
+        .hero {
+            text-align: center;
+            padding: 100px 0 60px;
+            background: linear-gradient(135deg, #ffffff 0%, #edf1f5 100%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--brand);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero span.highlight {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #636e72;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* --- 4. TRUST & PORTFOLIO SECTION --- */
+        .portfolio-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsif */
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark);
+            padding: 20px;
+            border-radius: 12px;
+            background: var(--light);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+            border-color: #E1306C; /* Warna IG */
+        }
+
+        .portfolio-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .portfolio-category {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* --- 5. PRICING MENU SECTION --- */
+        .pricing-section {
+            padding: 80px 0;
+            background-color: #fafbfc;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 20px;
+        }
+
+        .card-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #b2bec3;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .card-features li {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .card-features li i {
+            color: var(--accent);
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+
+        .card-features li.strong {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* --- 6. DESSERT / EXTRA SECTION --- */
+        .dessert-section {
+            background: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .dessert-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .dessert-item {
+            max-width: 400px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: var(--radius);
+        }
+
+        .dessert-item i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* --- 7. FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            background: var(--brand);
+            color: var(--white);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .card.featured { transform: none; }
+            .card.featured:hover { transform: translateY(-10px); }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container reveal">
+            <h1>Modibi <span class="highlight">Creative Agency</span></h1>
+            <p>Kami mengubah followers menjadi pelanggan setia. Partner terpercaya pengelolaan media sosial dengan strategi konten yang terukur dan profesional.</p>
+            <a href="#portfolio" class="btn btn-brand">Lihat Klien Kami</a>
+            <a href="#menu" class="btn btn-outline" style="margin-left: 10px;">Lihat Pricelist</a>
+        </div>
+    </header>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>Dipercaya Banyak Brand</h2>
+                <p>Modibi telah membantu berbagai perusahaan, mulai dari industri kesehatan, properti, hingga korporasi besar untuk tampil memukau di digital.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <a href="https://www.instagram.com/id_perfecthealth/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Perfect Health</span>
+                    <span class="portfolio-category">Health & Wellness</span>
+                </a>
+                <a href="https://www.instagram.com/hokiindorayaofficial/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Hokiindo Raya</span>
+                    <span class="portfolio-category">Industrial & Engineering</span>
+                </a>
+                <a href="https://www.instagram.com/quessfit_/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Quessfit</span>
+                    <span class="portfolio-category">Fitness Apparel</span>
+                </a>
+                <a href="https://www.instagram.com/kelawass/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Kelawas</span>
+                    <span class="portfolio-category">Lifestyle</span>
+                </a>
+                <a href="https://www.instagram.com/xaviermarks.realty/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Xavier Marks</span>
+                    <span class="portfolio-category">Property Realty</span>
+                </a>
+                <a href="http://instagram.com/en_hauzrealty/?hl=en" target="_blank" class="portfolio-item">
+                    <i class="fab fa-instagram portfolio-icon"></i>
+                    <span class="portfolio-name">Enhauz Realty</span>
+                    <span class="portfolio-category">Property Agent</span>
+                </a>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #888; font-size: 0.9rem;">
+                ...dan masih banyak brand lainnya.
+            </p>
+        </div>
+    </section>
+
+    <section id="menu" class="pricing-section">
+        <div class="container reveal">
+            <div class="section-title">
+                <h2>🍽️ Daftar Menu Layanan</h2>
+                <p>Pilih paket nutrisi konten yang pas untuk bisnis Anda hari ini.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>The Essential Starter</h3>
+                        <div class="price">Rp 2 Juta<span>/bulan</span></div>
+                        <p style="font-size: 0.9rem; margin-top:10px; color:#888;">Pondasi visual profesional</p>
+                    </div>
+                    <ul class="card-features">
+                        <li class="strong"><i class="fas fa-utensils"></i> 30 Konten Total</li>
+                        <li><i class="fas fa-check"></i> 15 Single Image</li>
+                        <li><i class="fas fa-check"></i> 8 Carousel Content</li>
+                        <li><i class="fas fa-check"></i> 7 Video Reels/Tiktok (Editing)</li>
+                        <li class="strong"><i class="fas fa-rocket"></i> Ads Boosting 10k Views</li>
+                        <li><i class="fas fa-calendar-check"></i> Jadwal Posting Tiap Hari</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Modibi,%20saya%20tertarik%20paket%20Starter%202%20Juta" class="btn btn-outline">Pesan Paket Ini</a>
+                    </div>
+                </div>
+
+                <div class="card featured">
+                    <span class="badge">Best Seller ⭐</span>
+                    <div class="card-header">
+                        <h3>Chef’s Recommendation</h3>
+                        <div class="price">Rp 3 Juta<span>/bulan</span></div>
+                        <p style="font-size: 0.9rem; margin-top:10px; color:#888;">Video shoot langsung di lokasi</p>
+                    </div>
+                    <ul class="card-features">
+                        <li class="strong"><i class="fas fa-utensils"></i> 30 Konten Total</li>
+                        <li><i class="fas fa-check"></i> 15 Single Image</li>
+                        <li><i class="fas fa-check"></i> 8 Carousel Content</li>
+                        <li><i class="fas fa-check"></i> 7 Video Reels/Tiktok</li>
+                        <li class="strong" style="color: var(--primary);"><i class="fas fa-video"></i> 2x Visit Video Shoot (Lokasi)</li>
+                        <li><i class="fas fa-lightbulb"></i> Konsep & Directing dari Kami</li>
+                        <li class="strong"><i class="fas fa-rocket"></i> Ads Boosting 20k Views</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Modibi,%20saya%20tertarik%20paket%20Chef%20Recom%203%20Juta" class="btn btn-primary">Pesan Paket Ini</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>The Royal Feast</h3>
+                        <div class="price">Rp 5 Juta<span>/bulan</span></div>
+                        <p style="font-size: 0.9rem; margin-top:10px; color:#888;">Dominasi pasar & viral</p>
+                    </div>
+                    <ul class="card-features">
+                        <li class="strong"><i class="fas fa-utensils"></i> 30 Konten Premium</li>
+                        <li><i class="fas fa-check"></i> Komposisi Konten Lengkap</li>
+                        <li class="strong" style="color: var(--primary);"><i class="fas fa-video"></i> Visit Video Shoot Premium</li>
+                        <li class="strong" style="color: var(--primary);"><i class="fas fa-star"></i> +5 Video Review/Testimoni</li>
+                        <li><i class="fas fa-bullhorn"></i> Social Proof Branding</li>
+                        <li class="strong"><i class="fas fa-rocket"></i> Ads Boosting 50k Views</li>
+                    </ul>
+                    <div style="text-align: center;">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Modibi,%20saya%20tertarik%20paket%20Royal%205%20Juta" class="btn btn-outline">Pesan Paket Ini</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="dessert-section">
+        <div class="container reveal">
+            <h2>🍵 Fasilitas Penutup (Gratis)</h2>
+            <p>Sudah termasuk dalam semua paket di atas</p>
+            <div class="dessert-grid">
+                <div class="dessert-item">
+                    <i class="fab fa-instagram"></i> <i class="fab fa-tiktok"></i>
+                    <h4>Dual Platform Posting</h4>
+                    <p>Konten tayang di Instagram & TikTok secara bersamaan dan terjadwal rapi.</p>
+                </div>
+                <div class="dessert-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Monthly Evaluation</h4>
+                    <p>Meeting evaluasi tiap akhir bulan untuk membahas performa & strategi bulan depan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Siap Membuat Brand Anda Viral?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.8;">Konsultasikan kebutuhan sosial media Anda bersama Modibi sekarang.</p>
+            <a href="https://wa.me/6281234567890" class="btn btn-primary" style="font-size: 1.2rem; background: white; color: var(--brand);">
+                <i class="fab fa-whatsapp"></i> Chat WhatsApp Kami
+            </a>
+            <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">&copy; 2024 Modibi Creative Agency. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            // Target elements to animate
+            const reveals = document.querySelectorAll('.reveal, .card, .portfolio-item');
+            
+            reveals.forEach((el, index) => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                // Add explicit stagger delay in inline style via JS if needed, 
+                // but let's keep it simple for now by observing them naturally
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
